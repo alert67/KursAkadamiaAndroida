@@ -13,6 +13,7 @@ ext {
     def retrofitVersion = "2.9.0"
     def okHttpVersion = "4.8.0"
     def roomVersion = "2.2.5"
+    def lifeEventVersion = "1.2.0"
 
     coreDependencies = [
             appCompat: "androidx.appcompat:appcompat:" + appCompatVersion,
@@ -47,7 +48,7 @@ ext {
             lifecycleLivedata : "androidx.lifecycle:lifecycle-livedata-ktx:" + lifecycleVersion,
             lifecycleRuntime  : "androidx.lifecycle:lifecycle-runtime-ktx:" + lifecycleVersion,
             lifecycleCommon   : "androidx.lifecycle:lifecycle-common-java8:" + lifecycleVersion,
-            liveEvent         : "com.github.hadilq.liveevent:liveevent:1.2.0"
+            liveEvent         : "com.github.hadilq.liveevent:liveevent:" + lifeEventVersion
     ]
 
     networkDependencies = [
