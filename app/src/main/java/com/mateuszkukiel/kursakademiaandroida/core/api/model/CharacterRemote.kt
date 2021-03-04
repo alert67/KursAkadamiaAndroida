@@ -19,6 +19,8 @@ data class CharacterRemote(
     @SerializedName("type") val type: String,
     @SerializedName("url") val url: String
 ) {
+    companion object
+
     fun toCharacter() = Character(
         episodes = this.episodes,
         gender = this.gender,

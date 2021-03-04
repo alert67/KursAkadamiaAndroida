@@ -6,7 +6,7 @@ import com.mateuszkukiel.kursakademiaandroida.core.api.model.LocationRemote
 
 data class CharacterResponse(
     @SerializedName("info") val info: ResponseInfo,
-    @SerializedName("results") val results: List<LocationRemote>
+    @SerializedName("results") val results: List<CharacterRemote>
 ) {
     companion object
 }
