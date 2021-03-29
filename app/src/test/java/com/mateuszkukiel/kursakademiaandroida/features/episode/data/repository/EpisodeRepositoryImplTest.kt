@@ -3,7 +3,7 @@ package com.mateuszkukiel.kursakademiaandroida.features.episode.data.repository
 import com.mateuszkukiel.kursakademiaandroida.core.api.RickAndMortyApi
 import com.mateuszkukiel.kursakademiaandroida.core.api.model.EpisodeResponse
 import com.mateuszkukiel.kursakademiaandroida.core.network.NetworkStateProvider
-import com.mateuszkukiel.kursakademiaandroida.features.episode.EpisodeRepository
+import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.EpisodeRepository
 import com.mateuszkukiel.kursakademiaandroida.features.episode.data.local.EpisodeDao
 import com.mateuszkukiel.kursakademiaandroida.features.episode.data.local.model.EpisodeCached
 import com.mateuszkukiel.kursakademiaandroida.mock.mock
