@@ -1,6 +1,6 @@
 package com.mateuszkukiel.kursakademiaandroida.core.di
 
-import com.mateuszkukiel.kursakademiaandroida.features.data.remote.RickAndMortyApi
+import com.mateuszkukiel.kursakademiaandroida.core.api.RickAndMortyApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

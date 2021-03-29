@@ -60,7 +60,8 @@ ext {
 
     roomDependencies = [
             roomRuntime : "androidx.room:room-runtime:" + roomVersion,
-            roomCompiler: "androidx.room:room-compiler:" + roomVersion
+            roomCompiler: "androidx.room:room-compiler:" + roomVersion,
+            roomKtx: "androidx.room:room-ktx:" + roomVersion
     ]
 
 }
