@@ -16,6 +16,7 @@ import org.amshove.kluent.shouldBe
 import org.junit.jupiter.api.Test
 
 internal class EpisodeViewModelTest : ViewModelTest() {
+
     @Test
     fun `WHEN episode live data is observed THEN set pending state`() {
         //given
@@ -48,7 +49,7 @@ internal class EpisodeViewModelTest : ViewModelTest() {
         //given
         val episodes = listOf(Episode.mock(), Episode.mock(), Episode.mock())
         val useCase = mockk<GetEpisodesUseCase> {
-            every { this@mockk(any(), any(), any()) } answers {
+            every { this@mockk(any(), any(), any(), any()) } answers {
                 lastArg<(Result<List<Episode>>) -> Unit>()(Result.success(episodes))
             }
         }
@@ -73,7 +74,7 @@ internal class EpisodeViewModelTest : ViewModelTest() {
         //given
         val throwable = Throwable("Ops... Something went wrong")
         val useCase = mockk<GetEpisodesUseCase> {
-            every { this@mockk(any(), any(), any()) } answers {
+            every { this@mockk(any(), any(), any(), any()) } answers {
                 lastArg<(Result<List<Episode>>) -> Unit>()(Result.failure(throwable))
             }
         }
