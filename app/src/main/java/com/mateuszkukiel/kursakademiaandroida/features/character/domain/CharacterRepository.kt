@@ -1,4 +1,4 @@
-package com.mateuszkukiel.kursakademiaandroida.features.character
+package com.mateuszkukiel.kursakademiaandroida.features.character.domain
 
 import com.mateuszkukiel.kursakademiaandroida.features.character.domain.model.Character
 

@@ -1,4 +1,4 @@
-package com.mateuszkukiel.kursakademiaandroida.features.location
+package com.mateuszkukiel.kursakademiaandroida.features.location.domain
 
 import com.mateuszkukiel.kursakademiaandroida.features.location.domain.model.Location
 

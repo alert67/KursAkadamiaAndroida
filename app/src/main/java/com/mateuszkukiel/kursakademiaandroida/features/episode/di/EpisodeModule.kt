@@ -1,6 +1,6 @@
 package com.mateuszkukiel.kursakademiaandroida.features.episode.di
 
-import com.mateuszkukiel.kursakademiaandroida.features.episode.EpisodeRepository
+import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.EpisodeRepository
 import com.mateuszkukiel.kursakademiaandroida.features.episode.data.repository.EpisodeRepositoryImpl
 import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.GetEpisodesUseCase
 import com.mateuszkukiel.kursakademiaandroida.features.episode.presentation.EpisodeFragment
