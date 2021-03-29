@@ -1,4 +1,4 @@
-package com.mateuszkukiel.kursakademiaandroida.features.episode
+package com.mateuszkukiel.kursakademiaandroida.features.episode.domain
 
 import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.model.Episode
 

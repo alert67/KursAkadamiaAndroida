@@ -2,7 +2,7 @@ package com.mateuszkukiel.kursakademiaandroida.features.location.data.repository
 
 import com.mateuszkukiel.kursakademiaandroida.core.api.RickAndMortyApi
 import com.mateuszkukiel.kursakademiaandroida.core.network.NetworkStateProvider
-import com.mateuszkukiel.kursakademiaandroida.features.location.LocationRepository
+import com.mateuszkukiel.kursakademiaandroida.features.location.domain.LocationRepository
 import com.mateuszkukiel.kursakademiaandroida.features.location.data.local.LocationDao
 import com.mateuszkukiel.kursakademiaandroida.features.location.data.local.model.LocationCached
 import com.mateuszkukiel.kursakademiaandroida.features.location.domain.model.Location

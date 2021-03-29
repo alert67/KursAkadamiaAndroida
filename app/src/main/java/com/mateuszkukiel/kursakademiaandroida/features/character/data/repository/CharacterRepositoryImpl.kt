@@ -2,7 +2,7 @@ package com.mateuszkukiel.kursakademiaandroida.features.character.data.repositor
 
 import com.mateuszkukiel.kursakademiaandroida.core.api.RickAndMortyApi
 import com.mateuszkukiel.kursakademiaandroida.core.network.NetworkStateProvider
-import com.mateuszkukiel.kursakademiaandroida.features.character.CharacterRepository
+import com.mateuszkukiel.kursakademiaandroida.features.character.domain.CharacterRepository
 import com.mateuszkukiel.kursakademiaandroida.features.character.data.local.CharacterDao
 import com.mateuszkukiel.kursakademiaandroida.features.character.data.local.model.CharacterCached
 import com.mateuszkukiel.kursakademiaandroida.features.character.domain.model.Character
