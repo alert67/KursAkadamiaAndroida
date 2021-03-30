@@ -46,7 +46,10 @@ dependencies {
     implementation coroutinesDependencies.values()
     implementation lifecycleDependencies.values()
     implementation networkDependencies.values()
-    implementation roomDependencies.values()
+
+    implementation roomDependencies.get("roomRuntime")
+    implementation roomDependencies.get("roomKtx")
+    kapt roomDependencies.get("roomCompiler")
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.2"
     testImplementation "org.junit.jupiter:junit-jupiter-params:5.6.2"
