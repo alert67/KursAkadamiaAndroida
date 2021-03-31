@@ -2,7 +2,18 @@ package com.mateuszkukiel.kursakademiaandroida.mock
 
 import com.mateuszkukiel.kursakademiaandroida.features.location.data.local.model.LocationCached
 import com.mateuszkukiel.kursakademiaandroida.core.api.model.*
+import com.mateuszkukiel.kursakademiaandroida.features.location.domain.model.Location
 import org.jetbrains.annotations.TestOnly
+
+@TestOnly
+fun Location.Companion.mock() = Location(
+    id = 1,
+    name = "location name",
+    type = "location type",
+    url = "location url",
+    dimension = "location dimension",
+    residents = emptyList()
+)
 
 @TestOnly
 fun LocationRemote.Companion.mock() = LocationRemote(
