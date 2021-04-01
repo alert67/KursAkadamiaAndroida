@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import com.mateuszkukiel.kursakademiaandroida.R
 import com.mateuszkukiel.kursakademiaandroida.core.base.BaseFragment
 import com.mateuszkukiel.kursakademiaandroida.databinding.FragmentCharacterBinding
-import com.mateuszkukiel.kursakademiaandroida.features.episode.presentation.EpisodeViewModel
+import com.mateuszkukiel.kursakademiaandroida.features.character.presentation.list.CharacterListAdapter
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharacterFragment : BaseFragment<CharacterViewModel>(R.layout.fragment_character) {
@@ -17,6 +19,10 @@ class CharacterFragment : BaseFragment<CharacterViewModel>(R.layout.fragment_cha
     private val binding get() = _binding!!
 
     override val viewModel: CharacterViewModel by viewModel()
+
+    private val characterAdapter: CharacterListAdapter by lazy {
+        CharacterListAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +40,8 @@ class CharacterFragment : BaseFragment<CharacterViewModel>(R.layout.fragment_cha
 
     override fun initViews() {
         super.initViews()
+        binding.recyclerView.layoutManager = get<GridLayoutManager>()
+        binding.recyclerView.adapter = characterAdapter
     }
 
     override fun onIdleState() {
@@ -48,7 +56,7 @@ class CharacterFragment : BaseFragment<CharacterViewModel>(R.layout.fragment_cha
 
     private fun observeCharacters() {
         viewModel.characters.observe(this) {
-            val characters = it.toMutableList()
+            characterAdapter.submitList(it.toMutableList())
         }
     }
 

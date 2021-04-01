@@ -13,7 +13,7 @@ import org.koin.dsl.module
 val appModule = module {
 
     factory { LinearLayoutManager(androidContext()) }
-    factory { GridLayoutManager(androidContext(), 2) }
+    factory { GridLayoutManager(androidContext(), 2, GridLayoutManager.VERTICAL, false) }
     factory { DividerItemDecoration(androidContext(), LinearLayoutManager.VERTICAL) }
     factory { androidContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager }
     factory<NetworkStateProvider> { NetworkStateProviderImpl(get()) }
