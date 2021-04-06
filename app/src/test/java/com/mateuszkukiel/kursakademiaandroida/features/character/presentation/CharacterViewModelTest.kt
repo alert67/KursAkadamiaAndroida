@@ -3,6 +3,7 @@ package com.mateuszkukiel.kursakademiaandroida.features.character.presentation
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.mateuszkukiel.kursakademiaandroida.core.base.UiState
+import com.mateuszkukiel.kursakademiaandroida.core.exception.ErrorMapper
 import com.mateuszkukiel.kursakademiaandroida.features.character.domain.GetCharactersUseCase
 import com.mateuszkukiel.kursakademiaandroida.features.character.domain.model.Character
 import com.mateuszkukiel.kursakademiaandroida.mock.mock
@@ -21,7 +22,9 @@ class CharacterViewModelTest : ViewModelTest() {
     fun `WHEN character live data is observed THEN set pending state`() {
         //given
         val useCase = mockk<GetCharactersUseCase>(relaxed = true)
-        val viewModel = CharacterViewModel(useCase)
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
+
+        val viewModel = CharacterViewModel(useCase, errorMapper)
 
         //when
         viewModel.characters.observeForTesting()
@@ -34,7 +37,9 @@ class CharacterViewModelTest : ViewModelTest() {
     fun `WHEN character live data is observed THEN invoke use case to get episodes`() {
         //given
         val useCase = mockk<GetCharactersUseCase>(relaxed = true)
-        val viewModel = CharacterViewModel(useCase)
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
+
+        val viewModel = CharacterViewModel(useCase, errorMapper)
 
         //when
         viewModel.characters.observeForTesting()
@@ -52,8 +57,9 @@ class CharacterViewModelTest : ViewModelTest() {
                 lastArg<(Result<List<Character>>) -> Unit>()(Result.success(characters))
             }
         }
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
 
-        val viewModel = CharacterViewModel(useCase)
+        val viewModel = CharacterViewModel(useCase, errorMapper)
 
         //when
         viewModel.characters.observeForTesting()
@@ -80,7 +86,11 @@ class CharacterViewModelTest : ViewModelTest() {
             }
         }
         val observer = mockk<Observer<String>>(relaxed = true)
-        val viewModel = CharacterViewModel(useCase)
+        val errorMapper = mockk<ErrorMapper> {
+            every { map(any()) } returns throwable.message!!
+        }
+
+        val viewModel = CharacterViewModel(useCase, errorMapper)
 
         //when
         viewModel.message.observeForever(observer)

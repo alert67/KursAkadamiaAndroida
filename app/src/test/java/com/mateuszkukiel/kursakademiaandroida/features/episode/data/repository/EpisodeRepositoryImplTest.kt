@@ -2,10 +2,11 @@ package com.mateuszkukiel.kursakademiaandroida.features.episode.data.repository
 
 import com.mateuszkukiel.kursakademiaandroida.core.api.RickAndMortyApi
 import com.mateuszkukiel.kursakademiaandroida.core.api.model.EpisodeResponse
+import com.mateuszkukiel.kursakademiaandroida.core.exception.ErrorWrapper
 import com.mateuszkukiel.kursakademiaandroida.core.network.NetworkStateProvider
-import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.EpisodeRepository
 import com.mateuszkukiel.kursakademiaandroida.features.episode.data.local.EpisodeDao
 import com.mateuszkukiel.kursakademiaandroida.features.episode.data.local.model.EpisodeCached
+import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.EpisodeRepository
 import com.mateuszkukiel.kursakademiaandroida.mock.mock
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -26,9 +27,11 @@ internal class EpisodeRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
+
 
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodesDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodesDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }
@@ -47,9 +50,10 @@ internal class EpisodeRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
 
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodesDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodesDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }
@@ -68,9 +72,10 @@ internal class EpisodeRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns false
         }
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
 
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodesDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodesDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }

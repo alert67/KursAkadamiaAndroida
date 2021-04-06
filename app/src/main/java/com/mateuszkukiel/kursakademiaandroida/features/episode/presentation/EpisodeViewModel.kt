@@ -1,14 +1,19 @@
 package com.mateuszkukiel.kursakademiaandroida.features.episode.presentation
 
-import androidx.lifecycle.*
-import com.hadilq.liveevent.LiveEvent
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
 import com.mateuszkukiel.kursakademiaandroida.core.base.BaseViewModel
-import com.mateuszkukiel.kursakademiaandroida.core.base.UiState
+import com.mateuszkukiel.kursakademiaandroida.core.exception.ErrorMapper
 import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.GetEpisodesUseCase
 import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.model.Episode
 import com.mateuszkukiel.kursakademiaandroida.features.episode.presentation.model.EpisodeDisplayable
 
-class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : BaseViewModel() {
+class EpisodeViewModel(
+    private val getEpisodesUseCase: GetEpisodesUseCase,
+    errorMapper: ErrorMapper
+) : BaseViewModel(errorMapper) {
 
     private val _episodes by lazy {
         MutableLiveData<List<Episode>>()
