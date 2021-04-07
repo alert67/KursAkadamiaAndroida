@@ -56,7 +56,7 @@ class CharacterFragment : BaseFragment<CharacterViewModel>(R.layout.fragment_cha
 
     private fun observeCharacters() {
         viewModel.characters.observe(this) {
-            characterAdapter.submitList(it.toMutableList())
+            characterAdapter.submitList(it.toList())
         }
     }
 

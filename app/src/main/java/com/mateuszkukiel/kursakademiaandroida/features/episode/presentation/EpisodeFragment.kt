@@ -58,7 +58,7 @@ class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode
 
     private fun observeEpisodes() {
         viewModel.episodes.observe(this) { list ->
-            episodeAdapter.submitList(list.toMutableList())
+            episodeAdapter.submitList(list.toList())
         }
     }
 
