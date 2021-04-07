@@ -2,6 +2,7 @@ package com.mateuszkukiel.kursakademiaandroida.core.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.mateuszkukiel.kursakademiaandroida.features.character.data.local.CharacterDao
 import com.mateuszkukiel.kursakademiaandroida.features.character.data.local.model.CharacterCached
 import com.mateuszkukiel.kursakademiaandroida.features.episode.data.local.EpisodeDao
@@ -10,6 +11,7 @@ import com.mateuszkukiel.kursakademiaandroida.features.location.data.local.Locat
 import com.mateuszkukiel.kursakademiaandroida.features.location.data.local.model.LocationCached
 
 @Database(entities = [EpisodeCached::class, LocationCached::class, CharacterCached::class], version = 1)
+@TypeConverters(ListConverter::class, CharacterLocationConverter::class, CharacterOriginConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun episodeDao(): EpisodeDao
     abstract fun locationDao(): LocationDao

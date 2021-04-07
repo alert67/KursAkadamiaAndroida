@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KursAkademiaAndroida</string>
+    <string name="location_residents_label">Residents:</string>
+    <string name="location_dimension_label">Dimension:</string>
 </resources>
