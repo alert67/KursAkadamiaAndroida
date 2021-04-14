@@ -1,21 +1,24 @@
 package com.mateuszkukiel.kursakademiaandroida.features.episode.data.repository
 
 import com.mateuszkukiel.kursakademiaandroida.core.api.RickAndMortyApi
+import com.mateuszkukiel.kursakademiaandroida.core.exception.ErrorWrapper
+import com.mateuszkukiel.kursakademiaandroida.core.exception.callOrThrow
 import com.mateuszkukiel.kursakademiaandroida.core.network.NetworkStateProvider
-import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.EpisodeRepository
 import com.mateuszkukiel.kursakademiaandroida.features.episode.data.local.EpisodeDao
 import com.mateuszkukiel.kursakademiaandroida.features.episode.data.local.model.EpisodeCached
+import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.EpisodeRepository
 import com.mateuszkukiel.kursakademiaandroida.features.episode.domain.model.Episode
 
 class EpisodeRepositoryImpl(
     private val rickAndMortyApi: RickAndMortyApi,
     private val episodeDao: EpisodeDao,
-    private val networkStateProvider: NetworkStateProvider
+    private val networkStateProvider: NetworkStateProvider,
+    private val errorWrapper: ErrorWrapper
 ) : EpisodeRepository {
 
     override suspend fun getEpisodes(): List<Episode> {
-        return if(networkStateProvider.isNetworkAvailable()) {
-            getEpisodesFromRemote()
+        return if (networkStateProvider.isNetworkAvailable()) {
+            callOrThrow(errorWrapper) { getEpisodesFromRemote() }
                 .also { saveEpisodesToLocal(it) }
         } else {
             getEpisodesFromLocal()

@@ -2,10 +2,11 @@ package com.mateuszkukiel.kursakademiaandroida.features.character.data.repositor
 
 import com.mateuszkukiel.kursakademiaandroida.core.api.RickAndMortyApi
 import com.mateuszkukiel.kursakademiaandroida.core.api.model.CharacterResponse
+import com.mateuszkukiel.kursakademiaandroida.core.exception.ErrorWrapper
 import com.mateuszkukiel.kursakademiaandroida.core.network.NetworkStateProvider
-import com.mateuszkukiel.kursakademiaandroida.features.character.domain.CharacterRepository
 import com.mateuszkukiel.kursakademiaandroida.features.character.data.local.CharacterDao
 import com.mateuszkukiel.kursakademiaandroida.features.character.data.local.model.CharacterCached
+import com.mateuszkukiel.kursakademiaandroida.features.character.domain.CharacterRepository
 import com.mateuszkukiel.kursakademiaandroida.mock.mock
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -27,9 +28,10 @@ internal class CharacterRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
 
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getCharacters() }
@@ -48,9 +50,10 @@ internal class CharacterRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
 
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getCharacters() }
@@ -69,9 +72,10 @@ internal class CharacterRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns false
         }
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
 
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getCharacters() }
