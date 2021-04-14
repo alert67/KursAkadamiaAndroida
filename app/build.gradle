@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id "de.mannodermaus.android-junit5"
+    id 'kotlin-parcelize'
 }
 apply from: "../dependencies.gradle"
 
@@ -53,6 +54,7 @@ dependencies {
 
     implementation roomDependencies.get("roomRuntime")
     implementation roomDependencies.get("roomKtx")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt roomDependencies.get("roomCompiler")
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.2"

@@ -1,10 +1,10 @@
-package com.mateuszkukiel.kursakademiaandroida.features.episode.presentation.list
+package com.mateuszkukiel.kursakademiaandroida.features.episode.all.presentation.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mateuszkukiel.kursakademiaandroida.databinding.VhEpisodeBinding
-import com.mateuszkukiel.kursakademiaandroida.features.episode.presentation.model.EpisodeDisplayable
+import com.mateuszkukiel.kursakademiaandroida.features.episode.all.presentation.model.EpisodeDisplayable
 
 class EpisodeViewHolder(private val binding: VhEpisodeBinding) : RecyclerView.ViewHolder(binding.root) {
     companion object {

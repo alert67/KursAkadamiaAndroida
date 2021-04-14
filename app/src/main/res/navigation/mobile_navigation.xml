@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/episode_screen">
+    <fragment
+        android:id="@+id/character_screen"
+        android:name="com.mateuszkukiel.kursakademiaandroida.features.character.presentation.CharacterFragment"
+        android:label="@string/title_character"
+        tools:layout="@layout/fragment_character" />
+    <fragment
+        android:id="@+id/location_screen"
+        android:name="com.mateuszkukiel.kursakademiaandroida.features.location.presentation.LocationFragment"
+        android:label="@string/title_location"
+        tools:layout="@layout/fragment_location" />
+
+
+    <fragment
+        android:id="@+id/episode_screen"
+        android:name="com.mateuszkukiel.kursakademiaandroida.features.episode.all.presentation.EpisodeFragment"
+        android:label="@string/title_episode"
+        tools:layout="@layout/fragment_episode">
+        <action
+            android:id="@+id/action_navigate_from_episodes_screen_to_episode_details_screen"
+            app:destination="@id/episode_details_screen"
+            app:popUpTo="@id/episode_screen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/episode_details_screen"
+        android:name="com.mateuszkukiel.kursakademiaandroida.features.episode.details.presentation.EpisodeDetailsFragment"
+        android:label="@string/title_episode_details"
+        tools:layout="@layout/fragment_episode_details" />
+</navigation>

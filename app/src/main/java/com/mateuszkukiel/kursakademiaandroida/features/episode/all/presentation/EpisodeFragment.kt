@@ -1,4 +1,4 @@
-package com.mateuszkukiel.kursakademiaandroida.features.episode.presentation
+package com.mateuszkukiel.kursakademiaandroida.features.episode.all.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.mateuszkukiel.kursakademiaandroida.R
 import com.mateuszkukiel.kursakademiaandroida.core.base.BaseFragment
 import com.mateuszkukiel.kursakademiaandroida.databinding.FragmentEpisodeBinding
 import com.mateuszkukiel.kursakademiaandroida.databinding.VhEpisodeBinding
-import com.mateuszkukiel.kursakademiaandroida.features.episode.presentation.list.EpisodeListAdapter
+import com.mateuszkukiel.kursakademiaandroida.features.episode.all.presentation.list.EpisodeListAdapter
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,7 +23,9 @@ class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode
     override val viewModel: EpisodeViewModel by viewModel()
 
     private val episodeAdapter: EpisodeListAdapter by lazy {
-        EpisodeListAdapter()
+        EpisodeListAdapter { episode ->
+            viewModel.onEpisodeClick(episode)
+        }
     }
 
     override fun initObservers() {
